@@ -1,0 +1,62 @@
+<!-- jQuery -->
+<script src="/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript
+<script src="js/bootstrap.min.js"></script> -->
+
+<!-- Plugin JavaScript -->
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.fittext.js"></script>
+<script src="/js/wow.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/creative.js"></script>
+
+<!-- jQuery
+<script src="/vendor/jquery/jquery.min.js"></script> -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="/js/new-age.min.js"></script>
+
+{% if site.google_analytics %}
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ site.google_analytics }}']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+{% endif %}
+
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=cm0seoeju7"></script>
+
+
+<script id="code">
+  let lat = 37.55441;
+  let lng = 126.93733;
+  var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(lat, lng), //지도의 초기 중심 좌표
+    zoom: 18, //지도의 초기 줌 레벨
+    minZoom: 8, //지도의 최소 줌 레벨
+    zoomControl: true, //줌 컨트롤의 표시 여부
+    zoomControlOptions: { //줌 컨트롤의 옵션
+      position: naver.maps.Position.TOP_RIGHT
+    }
+  });
+  var marker = new naver.maps.Marker({
+      position: new naver.maps.LatLng(lat, lng),
+      map: map
+  });
+</script>

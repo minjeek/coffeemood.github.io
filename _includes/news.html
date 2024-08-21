@@ -1,0 +1,62 @@
+<section id="news" class="download bg-green text-center">
+    <div class="container">
+        <div class="row">
+            <div class="row full-width" style="text-align:left;">
+                <div class="col-xs-12 text-title" style="text-align: left;">히스토리</div>
+            </div>
+        </div>
+
+        <hr class="heavy width-10" style="padding-bottom: 75px;">
+
+        <div style="position: relative;">
+            <div class="news-scrollview">
+                
+                <div class="news-container">
+                
+                {% for post in site.categories.ministry limit:10 %}
+                
+                    <div>
+                        <a href="{{ post.url | prepend: site.baseurl }}">
+                            <div class="news-item">
+                                <div class="thumbnail rounded">
+                                    <img src={{ post.thumbnail }}>
+                                </div>
+                                <div class="date">
+                                    {{ post.date | date: "%m.%d" }}
+                                </div>
+                                <div class="title">
+                                    {{ post.title }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                {% endfor %}
+                
+                    <div>
+                        <a href="/list/ministry/">
+                            <div class="news-item">
+                                <div class="thumbnail rounded">
+                                    <img src="/img/icon/more.png">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                
+                </div>
+            </div>
+
+            <div class="news-scrollcontrol left" style="left: -15px;">
+                <button class="scrollbutton">
+                    <img src="/img/icon/left.png">
+                </button>
+            </div>
+
+            <div class="news-scrollcontrol right" style="right: -15px;">
+                <button class="scrollbutton">
+                    <img src="/img/icon/right.png">
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

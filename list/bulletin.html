@@ -1,0 +1,38 @@
+---
+layout: post
+title: "주보"
+---
+
+{% for post in site.categories.bulletin %}
+
+    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+
+    {% if forloop.first %}
+
+    <h2 id="{{ this_year }}-ref" style="padding-bottom: 20px;">{{ this_year }}</h2>
+
+    {% endif %}
+
+    <div class="text-color-gray text-weight-3" style="padding: 0 0 5px 0;">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+            <div class="row">
+                <div class="col-xs-12 text-align-left text-size-middle text-weight-4 text-color-darkgray">
+                    {{ post.title }}
+                </div>
+            </div>
+        </a>
+    </div>
+
+    {% if forloop.last %}
+    {% else %}
+
+        {% if this_year != next_year %}
+
+    <h2 id="{{ next_year }}-ref">{{next_year}}</h2>
+    
+        {% endif %}
+
+    {% endif %}
+
+{% endfor %}

@@ -1,0 +1,54 @@
+---
+layout: post
+title: "주일설교"
+---
+  
+{% for post in site.categories.sermon limit:20 %}
+
+    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+
+    {% if forloop.first %}
+
+    <h2 id="{{ this_year }}-ref" style="padding-bottom: 20px;">{{ this_year }}</h2>
+    {% capture latest_youtube %}{{ post.youtube }}{% endcapture %}
+
+    {% endif %}
+
+    <div class="text-color-gray text-weight-3" style="padding: 0 0 10px 0;">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+            <div class="row">
+                <div class="flex-sm-container col-xs-10 text-align-left">
+                    <div class="text-size-middle text-color-darkgray flex-list-title" style="width:180px;">{{ post.title }}</div>
+                    <div class="text-size-middle text-color-darkgray flex-list-subtitle"> {{ post.subtitle }}</div>
+                </div>
+                <div class="col-xs-2 text-weight-2 text-align-right" style="padding-left:0; padding-right: 8px;">
+                    {{ post.date | date: "%m-%d" }}
+                </div>
+            </div>
+        </a>
+    </div>
+
+    {% if forloop.last %}
+    {% else %}
+
+        {% if this_year != next_year %}
+
+    <h2 id="{{ next_year }}-ref">{{next_year}}</h2>
+
+        {% endif %}
+
+    {% endif %}
+
+{% endfor %}
+
+<div class="go-youtube">
+    <div class="middle">
+        <a href="https://www.youtube.com/watch?v={{ latest_youtube }}&list=PLzCVCPy03Qq1ySW_mrIsXdrrDw35NBRyE&pp=iAQB" target="_blank">
+            <div class="box">
+                <img src="/img/icon/youtube.png">
+                <div class="text-size-small text-color-darkgray text-weight-4">에서 더 보기</div>
+            </div>
+        </a>
+    </div>
+</div>
